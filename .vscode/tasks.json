@@ -1,0 +1,42 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ build main file",
+            "command": "g++",
+            "args": [
+                "-Wall",
+                "-g",
+                "-o",
+                "bin/linux/program", 
+                "main.cpp",
+                "`pkg-config",
+                "--cflags",
+                "--libs",
+                "allegro-5", 
+                "allegro_ttf-5",
+                "allegro_primitives-5",
+                "allegro_physfs-5",
+                "allegro_memfile-5",
+                "allegro_main-5",
+                "allegro_image-5",
+                "allegro_font-5",
+                "allegro_color-5",
+                "allegro_audio-5",
+                "allegro_acodec-5`"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "task for gebugging without code optimalization."
+        }
+    ],
+    "version": "2.0.0"
+}
