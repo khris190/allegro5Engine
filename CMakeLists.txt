@@ -18,3 +18,5 @@ if(NOT googletest_POPULATED)
 endif()     # NOT googletest_POPULATED
 
 add_subdirectory(tests)
+
+package_add_test_with_libraries(HelloTests tests.cpp hello "${PROJECT_DIR}")
