@@ -73,6 +73,30 @@
                 "isDefault": true
             },
             "detail": "task for running tests."
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ tests",
+            "command": "g++",
+            "args": [
+                "-Wall",
+                "-g",
+                "-o",
+                "tests/test",
+                "tests/maintest.cpp",
+                "-ldl"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "task for running sotests."
         }
     ],
     "version": "2.0.0"

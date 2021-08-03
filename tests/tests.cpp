@@ -1,5 +1,7 @@
-#include  "googletest-src/googletest/include/gtest/gtest.h"
-
-TEST(HelloTests, testHello) {
-    //ASSERT_STREQ("Hello Jim", generateHelloString("Jim").c_str());
+#include <stdio.h>
+ #include "tests.hpp"
+ 
+extern "C" void foo()
+{
+    puts("Hello, I am a shared library");
 }
