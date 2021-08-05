@@ -2,14 +2,19 @@
 echo "tests.cpp -> tests.o"
 x86_64-w64-mingw32-g++ -c -Wall -Werror -fpic tests.cpp
 
-echo "tests.o -> libtests.so"
+echo "tests.o -> libtests.dll"
 x86_64-w64-mingw32-g++ -shared -o libtests.dll tests.o
 
 
 #added -lstdc++fs for filesystem support
 echo "compiling main tests"
-x86_64-w64-mingw32-g++ -O2 -Wall -o test maintest.cpp -ldl -lstdc++fs
+x86_64-w64-mingw32-g++ -DWINDOWS -O2 -Wall -o x64/test maintest.cpp -ldl -lstdc++fs
 
 echo "running programm:
 "
-./test
+cd x64
+wine test.exe
+cd ..
+
+
+# installed testmingw-w64-dlfcn-1.3.0-1

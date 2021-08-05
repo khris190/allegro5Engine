@@ -5,6 +5,11 @@
 #include <sstream>
 #include <experimental/filesystem>
 
+#ifdef WINDOWS
+std::string libExtension = ".dll";
+#else
+std::string libExtension = ".so";
+#endif
 
 namespace fs = std::experimental::filesystem;
 using function_ptr = void (*)(void);
@@ -12,7 +17,7 @@ using function_ptr = void (*)(void);
 int main( int argc, char * argv[] ) {
    
     std::stringstream currpath;
-    currpath << fs::current_path().string() << "/libtests.dll";
+    currpath << fs::current_path().string() << "/libtests" << libExtension;
 
 
     function_ptr fptr;
@@ -28,6 +33,7 @@ int main( int argc, char * argv[] ) {
     char *error;
     if ((error = dlerror()) != NULL) {
         puts (error);
+        delete error;
         return 1;
     }
     puts("found function");
@@ -35,7 +41,7 @@ int main( int argc, char * argv[] ) {
 
     (*fptr)();
 
-
+delete error;
     dlclose(lib);
   return 0;
 }

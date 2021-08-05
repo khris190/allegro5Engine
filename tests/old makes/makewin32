@@ -1,0 +1,19 @@
+#!/bin/bash
+echo "tests.cpp -> tests.o"
+i686-w64-mingw32-g++ -c -Wall -Werror -fpic tests.cpp
+
+echo "tests.o -> libtests.dll"
+i686-w64-mingw32-g++ -shared -o x86/libtests.dll tests.o
+
+
+#added -lstdc++fs for filesystem support
+echo "compiling main tests"
+i686-w64-mingw32-g++ -DWINDOWS -O2 -Wall -o x86/test maintest.cpp -ldl -lstdc++fs
+
+echo "running programm:
+"
+cd x86
+wine test.exe
+cd ..
+
+# installed testmingw-w64-dlfcn-1.3.0-1
