@@ -12,7 +12,7 @@ LINLIBNAME=libtests.so
 ####################
 OUTPUT_DIR=bin
 LINUX_GCC=g++
-LINUX_CFLAGS=-O2 -Wall
+LINUX_CFLAGS=-O3 -Wall
 
 WINDOWS_GCC64=x86_64-w64-mingw32-g++
 WINDOWS_GCC32=i686-w64-mingw32-g++
@@ -40,6 +40,15 @@ help:
 	@echo "make windows64 - build for windows 64 only"
 	@echo "make help - print this help"
 	@echo "################"
+so:
+	mkdir -p $(OUTPUT_DIR)/linux/
+
+	$(LINUX_GCC) -O3 -c -Wall -Werror -fpic tests.cpp
+
+	$(LINUX_GCC) -O3 -shared -o $(OUTPUT_DIR)/linux/$(LINLIBNAME) $(OBIECTNAME)
+
+	rm $(OBIECTNAME)	
+
 linux:
 
 	mkdir -p $(OUTPUT_DIR)/linux/
@@ -77,7 +86,7 @@ win64:
 	$(WINDOWS_GCC64) $(WINDOWS_CFLAGS) -o $(OUTPUT_DIR)/winX64/$(PROGRAM_NAME).exe $(SOURCES) $(ENDFLAGS)
 
 
-run:
+runlin:
 	$(OUTPUT_DIR)/linux/$(PROGRAM_NAME)
 
 clean:

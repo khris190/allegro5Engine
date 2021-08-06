@@ -50,7 +50,7 @@
             "name": "g++ - build and debug sotests",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/tests/test",
+            "program": "${workspaceFolder}/tests/bin/linux/test",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

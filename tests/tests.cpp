@@ -3,5 +3,13 @@
  
 extern "C" void foo()
 {
-    puts("Hello, I am a shared library");
+    puts("this function was called from shared lib on runtime");
+}
+
+extern "C" void addition(int* i)
+{
+    for (int j = 0; j < 100000; j++)
+    {
+        (*i)++;  
+    } 
 }

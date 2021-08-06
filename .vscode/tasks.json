@@ -82,9 +82,10 @@
                 "-Wall",
                 "-g",
                 "-o",
-                "tests/test",
+                "tests/bin/linux/test",
                 "tests/maintest.cpp",
-                "-ldl"
+                "-ldl",
+                "-lstdc++fs"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
